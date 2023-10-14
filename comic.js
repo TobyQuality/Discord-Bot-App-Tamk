@@ -3,7 +3,7 @@ import fetch from "node-fetch";
 
 async function getComic() {
   const response = await fetch(url);
-  return response;
+  return response.url;
 }
 
 getComic().then((data) => console.log(data));
