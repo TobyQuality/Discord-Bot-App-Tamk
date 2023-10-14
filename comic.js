@@ -1,0 +1,1 @@
+const url = "https://c.xkcd.com/random/comic/";
