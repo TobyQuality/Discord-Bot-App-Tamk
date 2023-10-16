@@ -20,6 +20,7 @@ async function getComic() {
   const response = await fetch(url);
   let comicUrl = response.url;
 
+  // TODO: make sure the connection and response are valid
   const comicPage = await fetch(comicUrl);
   const html = await comicPage.text();
 
@@ -27,9 +28,13 @@ async function getComic() {
 }
 
 /**
+ * Function gets a String promise object and makes a HTML document out of it
+ * if possible. Since the given string should contain source html of a xkcd
+ * comic page, we can query the HTML document for the picture of the comic,
+ * returnin it as a string promise object.
  *
- * @param {Promise} comicHtml
- * @returns
+ * @param {Promise} comicHtml, contains String
+ * @returns The comic image source address.
  */
 async function getComicPic(comicHtml) {
   const dom = new JSDOM(comicHtml);
