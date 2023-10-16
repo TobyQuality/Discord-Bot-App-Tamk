@@ -9,7 +9,11 @@ async function getComic() {
   const comicPage = await fetch(comicUrl);
   const html = await comicPage.text();
 
-  const dom = new JSDOM(html);
+  return await getComicPic(html);
+}
+
+async function getComicPic(comicHtml) {
+  const dom = new JSDOM(comicHtml);
   let myContent = dom.window.document.querySelector("#comic img").src;
 
   return myContent;
