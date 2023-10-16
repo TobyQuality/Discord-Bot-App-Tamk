@@ -38,7 +38,8 @@ async function getComic() {
  */
 async function getComicPic(comicHtml) {
   const dom = new JSDOM(comicHtml);
-  let myContent = dom.window.document.querySelector("#comic img").src;
+  let myContent =
+    "https:" + dom.window.document.querySelector("#comic img").src;
 
   return myContent;
 }
