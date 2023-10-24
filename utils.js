@@ -77,6 +77,13 @@ export function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+/**
+ * Simple fetch function utilizing node-fetch, that has a check for
+ * bad requests.
+ *
+ * @param {string} url The url to use fetch on.
+ * @returns Promise<Response>, the response if fetching was ok.
+ */
 export async function fetchUrl(url) {
   const response = await fetch(url);
   if (!response.ok) {
