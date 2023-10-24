@@ -1,4 +1,9 @@
 /**
+ * This module contains functionality to post a webcomic at xkcd.com to a
+ * custom Discord server.
+ */
+
+/**
  * Import necessary modules, fetch is needed to get web responses and jsdom
  * is needed to form HTML Dovument from text file.
  */
