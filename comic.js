@@ -16,15 +16,24 @@ import { JSDOM } from "jsdom";
  * @returns The result of getComicPic as a promise object.
  */
 async function getComic() {
-  // TODO: make sure the connection and response are valid.
-  const response = await fetch(url);
-  let comicUrl = response.url;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    let comicUrl = response.url;
 
-  // TODO: make sure the connection and response are valid
-  const comicPage = await fetch(comicUrl);
-  const html = await comicPage.text();
+    const comicPage = await fetch(comicUrl);
+    if (!comicPage.ok) {
+      throw new Error(`HTTP error! Status: ${comicPage.status}`);
+    }
 
-  return await getComicPic(html);
+    const html = await comicPage.text();
+
+    return await getComicPic(html);
+  } catch (error) {
+    throw new Error(`Failed to fetch data: ${error.message}`);
+  }
 }
 
 /**
@@ -44,4 +53,6 @@ async function getComicPic(comicHtml) {
   return myContent;
 }
 
-getComic().then((data) => console.log(data));
+getComic()
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err));
