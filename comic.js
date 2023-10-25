@@ -10,6 +10,7 @@
 const url = "https://c.xkcd.com/random/comic/";
 import fetch from "node-fetch";
 import { JSDOM } from "jsdom";
+import { fetchUrl } from "./utils.js";
 
 /**
  * Function to get a random xkcd.com comic. First the function uses constant
@@ -22,17 +23,10 @@ import { JSDOM } from "jsdom";
  */
 async function getComic() {
   try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
+    const response = await fetchUrl(url);
     let comicUrl = response.url;
 
-    const comicPage = await fetch(comicUrl);
-    if (!comicPage.ok) {
-      throw new Error(`HTTP error! Status: ${comicPage.status}`);
-    }
-
+    const comicPage = await fetchUrl(comicUrl);
     const html = await comicPage.text();
 
     return await getComicPic(html);
