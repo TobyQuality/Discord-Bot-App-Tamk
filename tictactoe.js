@@ -1,3 +1,3 @@
-export function create2DArray(size) {
+export function createTTTArray(size) {
 
 }
