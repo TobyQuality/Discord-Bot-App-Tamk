@@ -8,7 +8,6 @@
  * is needed to form HTML Dovument from text file.
  */
 const url = "https://c.xkcd.com/random/comic/";
-import fetch from "node-fetch";
 import { JSDOM } from "jsdom";
 import { fetchUrl } from "./utils.js";
 
