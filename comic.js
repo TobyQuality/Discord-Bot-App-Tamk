@@ -45,10 +45,10 @@ async function getComic() {
  */
 async function getComicPic(comicHtml) {
   const dom = new JSDOM(comicHtml);
-  let myContent =
+  let pictureAddress =
     "https:" + dom.window.document.querySelector("#comic img").src;
 
-  return myContent;
+  return pictureAddress;
 }
 
 /**
