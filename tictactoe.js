@@ -14,3 +14,7 @@ export function createTTTArray(size, chara) {
     }
     return tttArray;
 }
+
+function addInput(x, y, chara) {
+
+}
