@@ -15,9 +15,17 @@ export function createTTTArray(size, chara) {
     return tttArray;
 }
 
+/**
+ *
+ * @param {x coordinate in 2d array} x
+ * @param {y coordinate in 2d array} y
+ * @param {character to be inserted} chara
+ * @param {2darray that's being inserted to} field
+ * @returns Invalid argument error or the updated field
+ */
 function addInput(x, y, chara, field) {
     if (x > field.length || y > field.length) {
-        return "invalid argument";
+        return IOException("invalid argument");
     }
 
     field[x][y] = chara
