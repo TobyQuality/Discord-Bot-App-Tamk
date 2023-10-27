@@ -16,7 +16,7 @@ export function createTTTArray(size, chara) {
 }
 
 /**
- *
+ * Inserts a given character to a specified spot in a 2d array
  * @param {x coordinate in 2d array} x
  * @param {y coordinate in 2d array} y
  * @param {character to be inserted} chara
