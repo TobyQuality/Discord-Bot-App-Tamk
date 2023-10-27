@@ -1,8 +1,9 @@
-/** Creates a specified size 2d array and populates it with a specific character
-    @param size - determines the size of the array
-    @param chara - determines the character the array is populated with
-    @return - returns the array
-*/
+/**
+ * Creates a specified size 2d array and populates it with a specific character
+ * @param {Array size} size
+ * @param {Character the array is populated with} chara
+ * @returns the populated array
+ */
 export function createTTTArray(size, chara) {
     let tttArray = [];
     for (let i = 0; i < size; i++) {
