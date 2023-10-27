@@ -15,6 +15,11 @@ export function createTTTArray(size, chara) {
     return tttArray;
 }
 
-function addInput(x, y, chara) {
+function addInput(x, y, chara, field) {
+    if (x > field.length || y > field.length) {
+        return "invalid argument";
+    }
 
+    field[x][y] = chara
+    return field
 }
