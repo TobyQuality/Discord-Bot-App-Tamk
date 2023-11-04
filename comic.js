@@ -51,6 +51,8 @@ async function getComicPic(comicHtml) {
   return pictureAddress;
 }
 
+export default getComic;
+
 /**
  * Testing
  */
