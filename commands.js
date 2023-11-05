@@ -24,10 +24,9 @@ const TEST_COMMAND = {
   type: 1,
 };
 
-// TODO check if command is correct, this was copy paste from test command
 const COMIC_COMMAND = {
   name: "comic",
-  description: "Get a random comic picture from xkcd.com",
+  description: "Basic command: get a random comic picture from xkcd.com",
   type: 1,
 };
 
