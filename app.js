@@ -63,6 +63,7 @@ app.post("/interactions", async function (req, res) {
     if (name === "comic") {
       let comic = "";
       // Fetches url for random comic picture from xkcd.com
+      // TODO test if works as it should
       getComic()
         .then((result) => (comic = result))
         .catch((err) => (comic = err));
