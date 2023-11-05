@@ -69,6 +69,7 @@ app.post("/interactions", async function (req, res) {
         .catch((err) => (comic = err));
       // Send a message into the channel where command was triggered from
       return res.send({
+        // TODO check if type is correct
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
           // Post a random comic picture to calling channel
