@@ -59,6 +59,7 @@ app.post("/interactions", async function (req, res) {
       });
     }
 
+    // TODO add proper comments
     if (name === "comic") {
       let comic = "";
       // Fetches url for random comic picture from xkcd.com
