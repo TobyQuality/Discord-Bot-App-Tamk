@@ -72,7 +72,6 @@ app.post("/interactions", async function (req, res) {
 
       // Send a message into the channel where command was triggered from
       return res.send({
-        // TODO check if type is correct
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
           // TODO see if thee data content is correct
