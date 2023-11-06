@@ -14,6 +14,7 @@ import {
 } from "./utils.js";
 // import { getShuffledOptions, getResult } from "./game.js";
 import getComic from "./comic.js";
+import { MessageAttachment } from "discord.js";
 
 // Create an express app
 const app = express();
@@ -70,13 +71,15 @@ app.post("/interactions", async function (req, res) {
         .catch((err) => (comic = err));
       // console.log(comic); works, prints the img url
 
+      //
+      const attachment = new MessageAttachment(comic);
       // Send a message into the channel where command was triggered from
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
           // TODO see if thee data content is correct
           // Post a random comic picture to calling channel
-          content: comic,
+          files: [attachment],
         },
       });
     }
