@@ -55,6 +55,9 @@ async function getComicPic(comicHtml) {
 
 async function getComicTitle(comicHtml) {
   const dom = new JSDOM(comicHtml);
+  let comicTitle = dom.window.document.querySelector("#ctitle").textContent;
+
+  return comicTitle;
 }
 
 export default getComic;
