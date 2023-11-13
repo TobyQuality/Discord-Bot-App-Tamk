@@ -53,6 +53,11 @@ async function getComicPic(comicHtml) {
   return pictureAddress;
 }
 
+/**
+ *
+ * @param {*} comicHtml
+ * @returns
+ */
 async function getComicTitle(comicHtml) {
   const dom = new JSDOM(comicHtml);
   let comicTitle = dom.window.document.querySelector("#ctitle").textContent;
