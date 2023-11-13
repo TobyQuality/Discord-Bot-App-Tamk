@@ -28,8 +28,9 @@ async function getComic() {
     const comicPage = await fetchUrl(comicUrl);
     const html = await comicPage.text();
     const comicTitle = await getComicTitle(html);
+    const comicPic = await getComicPic(html);
 
-    return await getComicPic(html);
+    return { comicTitle, comicPic };
   } catch (error) {
     throw new Error(`Failed to fetch data: ${error.message}`);
   }
