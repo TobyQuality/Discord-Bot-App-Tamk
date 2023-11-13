@@ -27,6 +27,7 @@ async function getComic() {
 
     const comicPage = await fetchUrl(comicUrl);
     const html = await comicPage.text();
+    const comicTitle = await getComicTitle(html);
 
     return await getComicPic(html);
   } catch (error) {
@@ -49,6 +50,10 @@ async function getComicPic(comicHtml) {
     "https:" + dom.window.document.querySelector("#comic img").src;
 
   return pictureAddress;
+}
+
+async function getComicTitle(comicHtml) {
+  const dom = new JSDOM(comicHtml);
 }
 
 export default getComic;
