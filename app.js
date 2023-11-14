@@ -68,12 +68,15 @@ app.post("/interactions", async function (req, res) {
       // Fetches url for random comic picture from xkcd.com
       getComic()
         .then((result) => (comic = result))
+        .then((comic) => (comic = comic.json()))
         .catch((err) => (comic = err));
       // console.log(comic); works, prints the img url
 
       // Embed the image using EmbedBuilder from discord.js
       // Example https://discordjs.guide/popular-topics/embeds.html#using-the-embed-constructor
-      const embed = new EmbedBuilder().setImage(comic);
+      const embed = new EmbedBuilder()
+        .setTitle(comic.title)
+        .setImage(comic.image);
       // Send a message into the channel where command was triggered from
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
