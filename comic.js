@@ -54,9 +54,13 @@ async function getComicPic(comicHtml) {
 }
 
 /**
+ * Function gets a String promise object and makes a HTML document out of it
+ * if possible. Since the given string should contain source html of a xkcd
+ * comic page, we can query the HTML document for the title of the comic,
+ * returnin it as a string promise object.
  *
- * @param {*} comicHtml
- * @returns
+ * @param {Promise} comicHtml, contains the comic page as string
+ * @returns The comic title from comic page.
  */
 async function getComicTitle(comicHtml) {
   const dom = new JSDOM(comicHtml);
