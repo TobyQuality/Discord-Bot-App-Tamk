@@ -69,7 +69,8 @@ app.post("/interactions", async function (req, res) {
       // from xkcd.com
       getComic()
         .then((result) => (comic = result))
-        .catch((err) => (comic = err));
+        .then((comic) => console.log(comic))
+        .catch((err) => console.error(err));
       console.log(comic); // works, prints the img url
 
       // Embed the image and title of comic using EmbedBuilder from discord.js
