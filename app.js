@@ -68,11 +68,13 @@ app.post("/interactions", async function (req, res) {
       // from xkcd.com
       let comic = await getComic();
       console.log(comic);
+      console.log(comic.title);
+      console.log(comic.image);
 
       // Embed the image and title of comic using EmbedBuilder from discord.js
       // Example https://discordjs.guide/popular-topics/embeds.html#using-the-embed-constructor
       const embed = new EmbedBuilder()
-        // .setTitle(comic.title)
+        .setTitle(comic.title)
         .setImage(comic.image);
       // Send a message into the channel where command was triggered from
       return res.send({
