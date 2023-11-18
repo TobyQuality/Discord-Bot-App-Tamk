@@ -64,7 +64,7 @@ app.post("/interactions", async function (req, res) {
     should implement image posting directly.
     */
     if (name === "comic") {
-      let comic = "";
+      let comic = {};
       // Fetches url for random comic picture, and the title of the comic,
       // from xkcd.com
       getComic()
