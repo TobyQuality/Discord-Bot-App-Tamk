@@ -64,14 +64,10 @@ app.post("/interactions", async function (req, res) {
     should implement image posting directly.
     */
     if (name === "comic") {
-      let comic = {};
       // Fetches url for random comic picture, and the title of the comic,
       // from xkcd.com
-      getComic()
-        .then((result) => (comic = result))
-        .then((comic) => console.log(comic))
-        .catch((err) => console.error(err));
-      console.log(comic); // works, prints the img url
+      let comic = await getComic();
+      console.log(comic);
 
       // Embed the image and title of comic using EmbedBuilder from discord.js
       // Example https://discordjs.guide/popular-topics/embeds.html#using-the-embed-constructor
