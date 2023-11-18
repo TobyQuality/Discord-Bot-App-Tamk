@@ -74,6 +74,6 @@ export default getComic;
 /**
  * Testing
  */
-getComic()
-  .then((data) => console.log(data))
-  .catch((err) => console.log(err));
+// getComic()
+//   .then((data) => console.log(data))
+//   .catch((err) => console.log(err));
