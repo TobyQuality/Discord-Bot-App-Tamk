@@ -74,8 +74,11 @@ app.post("/interactions", async function (req, res) {
       // Embed the image and title of comic using EmbedBuilder from discord.js
       // Example https://discordjs.guide/popular-topics/embeds.html#using-the-embed-constructor
       const embed = new EmbedBuilder()
+        .setColor(0x0099ff)
         .setTitle(comic.title)
-        .setImage(comic.image);
+        .setImage(comic.image)
+        .setTimestamp()
+        .setFooter({ text: comic.url });
       // Send a message into the channel where command was triggered from
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
