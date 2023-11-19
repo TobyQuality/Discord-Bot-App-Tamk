@@ -23,7 +23,7 @@ import { fetchUrl } from "./utils.js";
 async function getComic() {
   try {
     const response = await fetchUrl(url);
-    let comicUrl = response.url;
+    const comicUrl = response.url;
 
     const comicPage = await fetchUrl(comicUrl);
     const html = await comicPage.text();
