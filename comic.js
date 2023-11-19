@@ -30,7 +30,7 @@ async function getComic() {
     const comicTitle = await getComicTitle(html);
     const comicPic = await getComicPic(html);
 
-    return { title: comicTitle, image: comicPic };
+    return { title: comicTitle, image: comicPic, url: comicPage };
   } catch (error) {
     throw new Error(`Failed to fetch data: ${error.message}`);
   }
