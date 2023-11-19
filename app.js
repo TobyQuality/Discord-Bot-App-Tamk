@@ -77,7 +77,7 @@ app.post("/interactions", async function (req, res) {
       const embed = new EmbedBuilder()
         .setColor(0x0099ff)
         .setTitle(comic.title)
-        .setAuthor({ name: comic.url, url: comic.url })
+        .setURL(comic.url)
         .setImage(comic.image)
         .setTimestamp();
       // Send a message into the channel where command was triggered from
