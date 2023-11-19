@@ -71,7 +71,8 @@ app.post("/interactions", async function (req, res) {
       console.log(comic.title);
       console.log(comic.image);
 
-      // Embed the image and title of comic using EmbedBuilder from discord.js
+      // Embed the image and title of comic using EmbedBuilder from discord.js.
+      // Also embed the original comic url in the footer of the embed.
       // Example https://discordjs.guide/popular-topics/embeds.html#using-the-embed-constructor
       const embed = new EmbedBuilder()
         .setColor(0x0099ff)
