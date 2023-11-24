@@ -3,7 +3,7 @@ import fetch from "node-fetch";
 import { verifyKey } from "discord-interactions";
 
 export function VerifyDiscordRequest(clientKey) {
-  return function (req, res, buf, encoding) {
+  return function (req, res, buf /*encoding*/) {
     const signature = req.get("X-Signature-Ed25519");
     const timestamp = req.get("X-Signature-Timestamp");
 
@@ -75,4 +75,20 @@ export function getRandomEmoji() {
 
 export function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+/**
+ * Simple fetch function utilizing node-fetch, that has a check for
+ * bad requests.
+ *
+ * @param {string} url The url to use fetch on.
+ * @returns Promise<Response>, the response if fetching was ok.
+ */
+export async function fetchUrl(url) {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`HTTP error! Status: ${response.status}`);
+  }
+
+  return response;
 }

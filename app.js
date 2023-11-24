@@ -3,16 +3,18 @@ import express from "express";
 import {
   InteractionType,
   InteractionResponseType,
-  InteractionResponseFlags,
-  MessageComponentTypes,
-  ButtonStyleTypes,
+  // InteractionResponseFlags,
+  // MessageComponentTypes,
+  // ButtonStyleTypes,
 } from "discord-interactions";
 import {
   VerifyDiscordRequest,
   getRandomEmoji,
-  DiscordRequest,
+  // DiscordRequest,
 } from "./utils.js";
-import { getShuffledOptions, getResult } from "./game.js";
+// import { getShuffledOptions, getResult } from "./game.js";
+import getComic from "./comic.js";
+import { EmbedBuilder } from "discord.js";
 
 // Create an express app
 const app = express();
@@ -22,14 +24,15 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json({ verify: VerifyDiscordRequest(process.env.PUBLIC_KEY) }));
 
 // Store for in-progress games. In production, you'd want to use a DB
-const activeGames = {};
+// const activeGames = {};
 
 /**
  * Interactions endpoint URL where Discord will send HTTP requests
  */
 app.post("/interactions", async function (req, res) {
   // Interaction type and data
-  const { type, id, data } = req.body;
+  // const { type, id, data } = req.body;
+  const { type, data } = req.body;
 
   /**
    * Handle verification requests
@@ -53,6 +56,35 @@ app.post("/interactions", async function (req, res) {
         data: {
           // Fetches a random emoji to send from a helper function
           content: "hello world " + getRandomEmoji(),
+        },
+      });
+    }
+
+    /* "comic" command, right now posts link to xkcd.com comic img on channel,
+    should implement image posting directly.
+    */
+    if (name === "comic") {
+      // Fetches url for random comic picture, and the title of the comic,
+      // from xkcd.com
+      let comic = await getComic();
+      console.log(comic);
+      console.log(comic.title);
+      console.log(comic.image);
+
+      // Embed the image and title of comic using EmbedBuilder from discord.js.
+      // Also embed the original comic url in the footer of the embed.
+      // Example https://discordjs.guide/popular-topics/embeds.html#using-the-embed-constructor
+      const embed = new EmbedBuilder()
+        .setColor(0x0099ff)
+        .setTitle(comic.title)
+        .setDescription(comic.url)
+        .setImage(comic.image)
+        .setTimestamp();
+      // Send a message into the channel where command was triggered from
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          embeds: [embed],
         },
       });
     }
