@@ -77,3 +77,11 @@ export function getRandomEmoji() {
 export function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+export async function showMessages() {
+  const messages = getMessages();
+  const parseJson = JSON.parse(messages);
+  return parseJson.map((msg) => {
+    msg.message;
+  });
+}
