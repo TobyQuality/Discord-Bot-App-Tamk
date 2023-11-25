@@ -70,6 +70,30 @@ app.post("/interactions", async function (req, res) {
         },
       });
     }
+
+    // "post message" command
+    if (name === "postmessage") {
+      // Send a message into the channel where command was triggered from
+      const messageContent = options[0]?.value; // Assumes the value is a string
+
+      try {
+        const response = await createMessage(messageContent);
+        return res.send({
+          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+          data: {
+            content: `Created message with ID ${response.id}`,
+          },
+        });
+      } catch (err) {
+        console.error(err);
+        return res.send({
+          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+          data: {
+            content: "Failed to create message",
+          },
+        });
+      }
+    }
   }
 });
 

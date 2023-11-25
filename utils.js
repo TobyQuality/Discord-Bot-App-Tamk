@@ -88,6 +88,10 @@ export async function showMessages() {
 }
 
 export async function postMessage(message) {
-  const newMessage = createMessage(message);
+  client.on("message", (message) => {
+    if (message.content === "!savemessage") {
+      createMessage(message);
+    }
+  });
   return newMessage;
 }
