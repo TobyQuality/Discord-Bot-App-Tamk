@@ -45,7 +45,7 @@ app.post("/interactions", async function (req, res) {
    * See https://discord.com/developers/docs/interactions/application-commands#slash-commands
    */
   if (type === InteractionType.APPLICATION_COMMAND) {
-    const { name } = data;
+    const { name, options } = data;
 
     // "test" command
     if (name === "test") {
@@ -93,6 +93,18 @@ app.post("/interactions", async function (req, res) {
           },
         });
       }
+    }
+
+    // "show messages" command
+    if (name === "showmessages") {
+      // Send a message into the channel where command was triggered from
+      const messages = await showMessages();
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          content: messages,
+        },
+      });
     }
   }
 });
