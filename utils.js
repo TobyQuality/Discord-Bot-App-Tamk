@@ -2,6 +2,7 @@ import "dotenv/config";
 import fetch from "node-fetch";
 import { verifyKey } from "discord-interactions";
 import { createMessage, getMessages } from "./dbjsoninteractions";
+import { Client } from "discord.js";
 
 export function VerifyDiscordRequest(clientKey) {
   return function (req, res, buf, encoding) {
