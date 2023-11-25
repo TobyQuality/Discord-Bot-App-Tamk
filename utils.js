@@ -85,3 +85,8 @@ export async function showMessages() {
     msg.message;
   });
 }
+
+export async function postMessage(message) {
+  const newMessage = createMessage(message);
+  return newMessage;
+}
