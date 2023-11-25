@@ -11,9 +11,10 @@ import {
   VerifyDiscordRequest,
   getRandomEmoji,
   DiscordRequest,
+  postMessage,
+  createMessage,
 } from "./utils.js";
 import { getShuffledOptions, getResult } from "./game.js";
-import axios from "axios";
 
 // Create an express app
 const app = express();
