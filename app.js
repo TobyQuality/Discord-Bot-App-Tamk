@@ -56,6 +56,18 @@ app.post("/interactions", async function (req, res) {
         },
       });
     }
+
+    // "test" command
+    if (name === "anotherTest") {
+      // Send a message into the channel where command was triggered from
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          // Fetches a random chuck norris joke to send from a helper function
+          content: chuckNorrisJoke(),
+        },
+      });
+    }
   }
 });
 
