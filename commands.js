@@ -1,6 +1,6 @@
-import 'dotenv/config';
-import { getRPSChoices } from './game.js';
-import { capitalize, InstallGlobalCommands } from './utils.js';
+import "dotenv/config";
+import { getRPSChoices } from "./game.js";
+import { capitalize, InstallGlobalCommands } from "./utils.js";
 
 // Get the game choices from game.js
 function createCommandChoices() {
@@ -17,22 +17,29 @@ function createCommandChoices() {
   return commandChoices;
 }
 
+// Command for json db to fetch all messages
+const SHOWMESSAGES_COMMAND = {
+  name: "showmessages",
+  description: "Fetch all messages",
+  type: 1,
+};
+
 // Simple test command
 const TEST_COMMAND = {
-  name: 'test',
-  description: 'Basic command',
+  name: "test",
+  description: "Basic command",
   type: 1,
 };
 
 // Command containing options
 const CHALLENGE_COMMAND = {
-  name: 'challenge',
-  description: 'Challenge to a match of rock paper scissors',
+  name: "challenge",
+  description: "Challenge to a match of rock paper scissors",
   options: [
     {
       type: 3,
-      name: 'object',
-      description: 'Pick your object',
+      name: "object",
+      description: "Pick your object",
       required: true,
       choices: createCommandChoices(),
     },
