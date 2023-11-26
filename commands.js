@@ -24,6 +24,13 @@ const SHOWMESSAGES_COMMAND = {
   type: 1,
 };
 
+// Command for json db to post a message
+const POSTMESSAGE_COMMAND = {
+  name: "postmessage",
+  description: "Post a message",
+  type: 1,
+};
+
 // Simple test command
 const TEST_COMMAND = {
   name: "test",
