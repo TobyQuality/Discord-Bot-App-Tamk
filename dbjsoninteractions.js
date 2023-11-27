@@ -1,24 +1,26 @@
 import express from "express";
-import jsonServer from "./jsonServer";
+import jsonServer from "json-server";
 
-// create an instance of express
+// Create an instance of Express
 const app = express();
 
-// mount json-server on no specific path
-app.use(jsonServer);
+// Create an instance of json-server
+const jsonApp = jsonServer.create();
 
-// create functions to make API calls
+// Use the router from json-server
+const jsonRouter = jsonServer.router("db.json");
 
-const url = "http://localhost:4000/messages";
+// Set default middlewares (logger, static, cors, etc.)
+jsonApp.use(jsonServer.defaults());
 
-// create a function to get all posts
-export async function getMessages() {
-  const res = await axios.get(url);
-  return res.data;
-}
+// Use the router middleware
+jsonApp.use(jsonRouter);
 
-// create a function to create a new message
-export async function createMessage(message) {
-  const res = await axios.post(url, message);
-  return res.data;
-}
+// Mount the json-server app on a specific path in the main Express app
+app.use("/api", jsonApp);
+
+// Start the Express server
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+  console.log(`Main app listening on port ${PORT}`);
+});
