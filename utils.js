@@ -3,7 +3,6 @@ import fetch from "node-fetch";
 import { verifyKey } from "discord-interactions";
 import { createMessage, getMessages } from "./dbjsoninteractions.js";
 import { Client } from "discord.js";
-import { json } from "body-parser";
 
 export function VerifyDiscordRequest(clientKey) {
   return function (req, res, buf, encoding) {
@@ -82,10 +81,9 @@ export function capitalize(str) {
 
 export async function showMessages() {
   try {
-    const response = await axios.get(jsondbUrl);
+    const response = await axios.get("http://localhost:4000/api/messages");
     console.log(response.data);
-    const parseJson = JSON.parse(response.data);
-    return parseJson.map((msg) => {
+    return response.map((msg) => {
       msg.message;
     });
   } catch (err) {
