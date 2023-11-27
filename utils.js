@@ -80,7 +80,7 @@ export function capitalize(str) {
 }
 
 export async function showMessages() {
-  const messages = getMessages();
+  const messages = await getMessages();
   const parseJson = JSON.parse(messages);
   return parseJson.map((msg) => {
     msg.message;
