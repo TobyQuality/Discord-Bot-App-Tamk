@@ -1,3 +1,4 @@
+/*
 import express from "express";
 import jsonServer from "json-server";
 
@@ -24,3 +25,4 @@ const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`Main app listening on port ${PORT}`);
 });
+*/

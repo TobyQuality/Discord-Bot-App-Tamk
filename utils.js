@@ -1,7 +1,7 @@
 import "dotenv/config";
 import fetch from "node-fetch";
 import { verifyKey } from "discord-interactions";
-import { createMessage, getMessages } from "./dbjsoninteractions.js";
+// import { createMessage, getMessages } from "./dbjsoninteractions.js";
 import { Client } from "discord.js";
 
 export function VerifyDiscordRequest(clientKey) {
@@ -81,21 +81,22 @@ export function capitalize(str) {
 
 export async function showMessages() {
   try {
-    const response = await axios.get("http://localhost:4000/api/messages");
+    const response = await axios.get("http://localhost:4000/messages");
     console.log(response.data);
-    return response.map((msg) => {
-      msg.message;
-    });
+    return response.data;
   } catch (err) {
     console.error(err);
   }
 }
 
+/*
 export async function postMessage(message) {
   client.on("message", (message) => {
     if (message.content === "!savemessage") {
       createMessage(message);
     }
   });
+
   return newMessage;
 }
+*/

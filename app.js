@@ -14,7 +14,6 @@ import {
   postMessage,
   showMessages,
 } from "./utils.js";
-import axios from "axios";
 import { getShuffledOptions, getResult } from "./game.js";
 
 // Create an express app
@@ -23,9 +22,6 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 // Parse request body and verifies incoming requests using discord-interactions package
 app.use(express.json({ verify: VerifyDiscordRequest(process.env.PUBLIC_KEY) }));
-
-// Add url for db json
-const jsondbUrl = "http://localhost:4000/messages";
 
 // Store for in-progress games. In production, you'd want to use a DB
 const activeGames = {};
@@ -106,7 +102,17 @@ app.post("/interactions", async function (req, res) {
         console.log("show messages");
         return res.send(messages);
       });
-      }
+      // Send a message into the channel where command was triggered from
+      const messages = await showMessages();
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          content: messages,
+        },
+      });
+    }
+  }
+});
 
 app.listen(PORT, () => {
   console.log("Listening on port", PORT);
