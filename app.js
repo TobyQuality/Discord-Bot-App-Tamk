@@ -14,6 +14,7 @@ import {
   postMessage,
   showMessages,
 } from "./utils.js";
+import axios from "axios";
 import { getShuffledOptions, getResult } from "./game.js";
 
 // Create an express app
