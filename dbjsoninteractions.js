@@ -1,8 +1,9 @@
 import axios from "axios";
+import express from "express";
 
 // create functions to make API calls
 
-const url = "http://localhost:3000/messages";
+const url = "http://localhost:4000/messages";
 
 // create a function to get all posts
 export async function getMessages() {
