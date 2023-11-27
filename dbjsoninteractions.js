@@ -1,5 +1,11 @@
-import axios from "axios";
 import express from "express";
+import jsonServer from "./jsonServer";
+
+// create an instance of express
+const app = express();
+
+// mount json-server on no specific path
+app.use(jsonServer);
 
 // create functions to make API calls
 
