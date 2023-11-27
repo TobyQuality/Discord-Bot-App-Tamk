@@ -80,11 +80,15 @@ export function capitalize(str) {
 }
 
 export async function showMessages() {
-  const messages = await getMessages();
-  const parseJson = JSON.parse(messages);
-  return parseJson.map((msg) => {
-    msg.message;
-  });
+  try {
+    const messages = await getMessages();
+    const parseJson = JSON.parse(messages);
+    return parseJson.map((msg) => {
+      msg.message;
+    });
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 export async function postMessage(message) {
