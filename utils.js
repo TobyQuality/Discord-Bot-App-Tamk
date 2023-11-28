@@ -117,6 +117,4 @@ export async function postMessage(message) {
   } catch (err) {
     console.error(err);
   }
-
-  return newMessage;
 }

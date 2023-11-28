@@ -81,15 +81,16 @@ app.post("/interactions", async function (req, res) {
 
     // "post message" command
     if (name === "postmessage") {
+      console.log(options);
       // Send a message into the channel where command was triggered from
-      const messageContent = options[0]?.value; // Assumes the value is a string
+      const messageContent = options[0]; // Assumes the value is a string
 
       try {
         const response = await postMessage(messageContent);
         return res.send({
           type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
           data: {
-            content: response.data.message + " " + getRandomEmoji(),
+            content: response.data + " " + getRandomEmoji(),
           },
         });
       } catch (err) {
