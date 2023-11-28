@@ -94,7 +94,7 @@ export async function showMessages() {
     // show all messages, show as string
     let messages = "";
     for (let i = 0; i < data.length; i++) {
-      messages += data[i].content + "\n";
+      messages += data[i].message + "\n";
     }
     return messages;
   } catch (err) {
