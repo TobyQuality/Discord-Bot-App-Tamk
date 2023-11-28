@@ -59,7 +59,6 @@ app.post("/interactions", async function (req, res) {
       });
       */
       const messages = await showMessages();
-      console.log(messages);
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {

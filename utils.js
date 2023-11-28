@@ -46,10 +46,15 @@ export async function DiscordRequest(endpoint, options) {
 export async function InstallGlobalCommands(appId, commands) {
   // API endpoint to overwrite global commands
   const endpoint = `applications/${appId}/commands`;
+  console.log("InstallGlobalCommands");
 
   try {
     // This is calling the bulk overwrite endpoint: https://discord.com/developers/docs/interactions/application-commands#bulk-overwrite-global-application-commands
-    await DiscordRequest(endpoint, { method: "PUT", body: commands });
+    const discordRequest = await DiscordRequest(endpoint, {
+      method: "PUT",
+      body: commands,
+    });
+    console.log(discordRequest);
   } catch (err) {
     console.error(err);
   }
@@ -85,7 +90,13 @@ export async function showMessages() {
   try {
     const response = await axios.get("http://localhost:4000/messages");
     console.log(response.data);
-    return response.data;
+    const data = response.data;
+    // show all messages, show as string
+    let messages = "";
+    for (let i = 0; i < data.length; i++) {
+      messages += data[i].content + "\n";
+    }
+    return messages;
   } catch (err) {
     console.error(err);
   }
