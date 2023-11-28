@@ -49,11 +49,21 @@ app.post("/interactions", async function (req, res) {
     // "test" command
     if (name === "test") {
       // Send a message into the channel where command was triggered from
+      /*
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
           // Fetches a random emoji to send from a helper function
           content: "hello world " + getRandomEmoji(),
+        },
+      });
+      */
+      const messages = await showMessages();
+      console.log(messages);
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          content: JSON.stringify(messages),
         },
       });
     }
