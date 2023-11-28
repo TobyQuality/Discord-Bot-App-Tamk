@@ -5,6 +5,10 @@ import axios from "axios";
 // import { createMessage, getMessages } from "./dbjsoninteractions.js";
 import { Client } from "discord.js";
 
+function createId() {
+  return Math.random().toString(36).substr(2, 9);
+}
+
 export function VerifyDiscordRequest(clientKey) {
   return function (req, res, buf, encoding) {
     const signature = req.get("X-Signature-Ed25519");
@@ -94,7 +98,7 @@ export async function showMessages() {
     // show all messages, show as string
     let messages = "";
     for (let i = 0; i < data.length; i++) {
-      messages += data[i].message + "\n";
+      messages += " " + data[i].message + " ";
     }
     return messages;
   } catch (err) {
@@ -102,14 +106,16 @@ export async function showMessages() {
   }
 }
 
-/*
 export async function postMessage(message) {
-  client.on("message", (message) => {
-    if (message.content === "!savemessage") {
-      createMessage(message);
-    }
-  });
+  try {
+    const response = await axios.post("http://localhost:4000/messages", {
+      message: message,
+    });
+    console.log(response.data);
+    return response.data;
+  } catch (err) {
+    console.error(err);
+  }
 
   return newMessage;
 }
-*/
