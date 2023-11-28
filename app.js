@@ -11,7 +11,6 @@ import {
   VerifyDiscordRequest,
   getRandomEmoji,
   DiscordRequest,
-  postMessage,
   showMessages,
 } from "./utils.js";
 import { getShuffledOptions, getResult } from "./game.js";
@@ -97,17 +96,12 @@ app.post("/interactions", async function (req, res) {
 
     // "show messages" command
     if (name === "showmessages") {
-      app.get(jsondbUrl, async function (req, res) {
-        const messages = await showMessages();
-        console.log("show messages");
-        return res.send(messages);
-      });
-      // Send a message into the channel where command was triggered from
       const messages = await showMessages();
+      console.log(messages);
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
-          content: messages,
+          content: JSON.stringify(messages),
         },
       });
     }

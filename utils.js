@@ -1,6 +1,7 @@
 import "dotenv/config";
 import fetch from "node-fetch";
 import { verifyKey } from "discord-interactions";
+import axios from "axios";
 // import { createMessage, getMessages } from "./dbjsoninteractions.js";
 import { Client } from "discord.js";
 
@@ -56,6 +57,7 @@ export async function InstallGlobalCommands(appId, commands) {
 
 // Simple method that returns a random emoji from list
 export function getRandomEmoji() {
+  console.log("getRandomEmoji");
   const emojiList = [
     "😭",
     "😄",
