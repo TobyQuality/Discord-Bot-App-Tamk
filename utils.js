@@ -109,6 +109,7 @@ export async function showMessages() {
 export async function postMessage(message) {
   try {
     const response = await axios.post("http://localhost:4000/messages", {
+      id: createId(),
       message: message,
     });
     console.log(response.data);

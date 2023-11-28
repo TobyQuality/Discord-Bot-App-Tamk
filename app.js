@@ -89,7 +89,7 @@ app.post("/interactions", async function (req, res) {
         return res.send({
           type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
           data: {
-            content: `Created message with ID ${response.id}`,
+            content: response.data.message + " " + getRandomEmoji(),
           },
         });
       } catch (err) {
