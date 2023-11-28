@@ -1,6 +1,7 @@
 import { config } from "dotenv";
 import { REST } from "@discordjs/rest";
 import { Routes } from "discord-api-types/v9";
+import { InstallGlobalCommands } from "./utils.js";
 
 config();
 
@@ -37,3 +38,5 @@ const rest = new REST({ version: "9" }).setToken(process.env.DISCORD_TOKEN);
     console.error(error);
   }
 })();
+
+InstallGlobalCommands(process.env.APP_ID, commands);
