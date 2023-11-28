@@ -14,3 +14,7 @@ async function showMessages() {
     return "Error fetching messages";
   }
 }
+
+client.on("ready", () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+});
