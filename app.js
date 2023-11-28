@@ -105,7 +105,7 @@ app.post("/interactions", async function (req, res) {
     }
 
     // "show messages" command
-    if (name === "showmessages") {
+    if (name === "shmsgs") {
       const messages = await showMessages();
       console.log(messages);
       return res.send({

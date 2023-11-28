@@ -19,7 +19,7 @@ function createCommandChoices() {
 
 // Command for json db to fetch all messages
 const SHOWMESSAGES_COMMAND = {
-  name: "showmessages",
+  name: "shmsgs",
   description: "Fetch all messages",
   type: 1,
 };
