@@ -30,7 +30,8 @@ const activeGames = {};
  */
 app.post("/interactions", async function (req, res) {
   // Interaction type and data
-  const { type, id, data } = req.body;
+  const { type, id, data, options } = req.body;
+  console.log("req body: " + req.body);
 
   /**
    * Handle verification requests
@@ -45,11 +46,11 @@ app.post("/interactions", async function (req, res) {
    */
   if (type === InteractionType.APPLICATION_COMMAND) {
     const { name, options } = data;
+    console.log("name: " + name);
+    console.log("options: " + options);
 
     // "test" command
     if (name === "test") {
-      // Send a message into the channel where command was triggered from
-      /*
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
@@ -57,18 +58,10 @@ app.post("/interactions", async function (req, res) {
           content: "hello world " + getRandomEmoji(),
         },
       });
-      */
-      const messages = await showMessages();
-      return res.send({
-        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-        data: {
-          content: JSON.stringify(messages),
-        },
-      });
     }
 
-    // "test" command
-    if (name === "anotherTest") {
+    // "chucknorris" command
+    if (name === "chucknorris") {
       // Send a message into the channel where command was triggered from
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
