@@ -1,13 +1,6 @@
 import "dotenv/config";
 import fetch from "node-fetch";
 import { verifyKey } from "discord-interactions";
-import axios from "axios";
-// import { createMessage, getMessages } from "./dbjsoninteractions.js";
-import { Client } from "discord.js";
-
-function createId() {
-  return Math.random().toString(36).substr(2, 9);
-}
 
 export function VerifyDiscordRequest(clientKey) {
   return function (req, res, buf /*encoding*/) {
@@ -33,7 +26,7 @@ export async function DiscordRequest(endpoint, options) {
       Authorization: `Bot ${process.env.DISCORD_TOKEN}`,
       "Content-Type": "application/json; charset=UTF-8",
       "User-Agent":
-        "DiscordBot (https://5029-88-112-110-204.ngrok-free.app/interactions, 1.0.0)",
+        "DiscordBot (https://12b4-88-112-110-204.ngrok-free.app/interactions, 1.0.0)",
     },
     ...options,
   });
@@ -50,15 +43,10 @@ export async function DiscordRequest(endpoint, options) {
 export async function InstallGlobalCommands(appId, commands) {
   // API endpoint to overwrite global commands
   const endpoint = `applications/${appId}/commands`;
-  console.log("InstallGlobalCommands");
 
   try {
     // This is calling the bulk overwrite endpoint: https://discord.com/developers/docs/interactions/application-commands#bulk-overwrite-global-application-commands
-    const discordRequest = await DiscordRequest(endpoint, {
-      method: "PUT",
-      body: commands,
-    });
-    console.log(discordRequest);
+    await DiscordRequest(endpoint, { method: "PUT", body: commands });
   } catch (err) {
     console.error(err);
   }
@@ -66,7 +54,6 @@ export async function InstallGlobalCommands(appId, commands) {
 
 // Simple method that returns a random emoji from list
 export function getRandomEmoji() {
-  console.log("getRandomEmoji");
   const emojiList = [
     "😭",
     "😄",
@@ -90,7 +77,6 @@ export function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-<<<<<<< HEAD
 /**
  * Simple fetch function utilizing node-fetch, that has a check for
  * bad requests.
@@ -105,33 +91,4 @@ export async function fetchUrl(url) {
   }
 
   return response;
-=======
-export async function showMessages() {
-  try {
-    const response = await axios.get("http://localhost:4000/messages");
-    console.log(response.data);
-    const data = response.data;
-    // show all messages, show as string
-    let messages = "";
-    for (let i = 0; i < data.length; i++) {
-      messages += " " + data[i].message + " ";
-    }
-    return messages;
-  } catch (err) {
-    console.error(err);
-  }
-}
-
-export async function postMessage(message) {
-  try {
-    const response = await axios.post("http://localhost:4000/messages", {
-      id: createId(),
-      message: message,
-    });
-    console.log(response.data);
-    return response.data;
-  } catch (err) {
-    console.error(err);
-  }
->>>>>>> jsondb
 }

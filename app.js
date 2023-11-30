@@ -10,12 +10,7 @@ import {
 import {
   VerifyDiscordRequest,
   getRandomEmoji,
-<<<<<<< HEAD
   // DiscordRequest,
-=======
-  DiscordRequest,
-  showMessages,
->>>>>>> jsondb
 } from "./utils.js";
 // import { getShuffledOptions, getResult } from "./game.js";
 import getComic from "./comic.js";
@@ -36,13 +31,8 @@ app.use(express.json({ verify: VerifyDiscordRequest(process.env.PUBLIC_KEY) }));
  */
 app.post("/interactions", async function (req, res) {
   // Interaction type and data
-<<<<<<< HEAD
   // const { type, id, data } = req.body;
   const { type, data } = req.body;
-=======
-  const { type, id, data, options } = req.body;
-  console.log("req body: " + req.body);
->>>>>>> jsondb
 
   /**
    * Handle verification requests
@@ -56,12 +46,11 @@ app.post("/interactions", async function (req, res) {
    * See https://discord.com/developers/docs/interactions/application-commands#slash-commands
    */
   if (type === InteractionType.APPLICATION_COMMAND) {
-    const { name, options } = data;
-    console.log("name: " + name);
-    console.log("options: " + options);
+    const { name } = data;
 
     // "test" command
     if (name === "test") {
+      // Send a message into the channel where command was triggered from
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
@@ -71,7 +60,6 @@ app.post("/interactions", async function (req, res) {
       });
     }
 
-<<<<<<< HEAD
     /* "comic" command, right now posts link to xkcd.com comic img on channel,
     should implement image posting directly.
     */
@@ -92,61 +80,11 @@ app.post("/interactions", async function (req, res) {
         .setDescription(comic.url)
         .setImage(comic.image)
         .setTimestamp();
-=======
-    // "chucknorris" command
-    if (name === "chucknorris") {
->>>>>>> jsondb
       // Send a message into the channel where command was triggered from
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
-<<<<<<< HEAD
           embeds: [embed],
-=======
-          // Fetches a random chuck norris joke to send from a helper function
-          content: chuckNorrisJoke(),
-        },
-      });
-    }
-
-    // "post message" command
-    if (name === "postmessage") {
-      console.log(options);
-      // Send a message into the channel where command was triggered from
-      const messageContent = options ? options[0]?.value : null; // Ensure options exist and access the value property
-
-      try {
-        if (!messageContent) {
-          throw new Error("No message content provided.");
-        }
-
-        const response = await postMessage(messageContent);
-        return res.send({
-          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-          data: {
-            content: response.data + " " + getRandomEmoji(),
-          },
-        });
-      } catch (err) {
-        console.error(err);
-        return res.send({
-          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-          data: {
-            content: "Failed to create message: " + err.message,
-          },
-        });
-      }
-    }
-
-    // "show messages" command
-    if (name === "showmessages") {
-      const messages = await showMessages();
-      console.log(messages);
-      return res.send({
-        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-        data: {
-          content: JSON.stringify(messages),
->>>>>>> jsondb
         },
       });
     }
