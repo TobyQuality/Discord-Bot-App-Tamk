@@ -17,6 +17,20 @@ function createCommandChoices() {
   return commandChoices;
 }
 
+// Command for json db to fetch all messages
+const SHOWMESSAGES_COMMAND = {
+  name: "showmessages",
+  description: "Fetch all messages",
+  type: 1,
+};
+
+// Command for json db to post a message
+const POSTMESSAGE_COMMAND = {
+  name: "postmessage",
+  description: "Post a message",
+  type: 1,
+};
+
 // Simple test command
 const TEST_COMMAND = {
   name: "test",
@@ -46,6 +60,6 @@ const CHALLENGE_COMMAND = {
   type: 1,
 };
 
-const ALL_COMMANDS = [TEST_COMMAND, COMIC_COMMAND, CHALLENGE_COMMAND];
+const ALL_COMMANDS = [TEST_COMMAND, COMIC_COMMAND, POSTMESSAGE_COMMAND, SHOWMESSAGES_COMMAND];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);
