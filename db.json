@@ -1,3 +1,6 @@
 {
-  "messages": [{ "id": 1, "message": "testi" }]
+  "messages": [
+    { "id": 1, "message": "testi" },
+    { "id": 2, "message": "moro" }
+  ]
 }
