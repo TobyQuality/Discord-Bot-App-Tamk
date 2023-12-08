@@ -16,7 +16,7 @@ import {
 // import { getShuffledOptions, getResult } from "./game.js";
 import getComic from "./comic.js";
 import { EmbedBuilder } from "discord.js";
-import { chuckNorrisJoke } from "./chucknorris.js";
+import { getChuckNorrisJoke } from "./chucknorris.js";
 
 // Create an express app
 const app = express();
@@ -91,7 +91,7 @@ app.post("/interactions", async function (req, res) {
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
-          content: chuckNorrisJoke(),
+          content: getChuckNorrisJoke(),
         },
       });
     }
