@@ -5,6 +5,7 @@ import { VerifyDiscordRequest, getRandomEmoji, showMessages } from "./utils.js";
 import getComic from "./comic.js";
 import { EmbedBuilder } from "discord.js";
 import { getChuckNorrisJoke } from "./chucknorris.js";
+import { getStarWarsInfo } from "./starwars.js";
 
 // Create an express app
 const app = express();
