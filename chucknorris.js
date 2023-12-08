@@ -4,12 +4,10 @@ const url = "https://api.chucknorris.io/jokes/random";
 import { JSDOM } from "jsdom";
 import { fetchUrl } from "./utils.js";
 
-async function getChuckNorrisJoke() {
+export async function getChuckNorrisJoke() {
   const response = await fetchUrl(url);
   const json = await response.json();
   const joke = json.value;
 
   return joke;
 }
-
-export { getChuckNorrisJoke };
