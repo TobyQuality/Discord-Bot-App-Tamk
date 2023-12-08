@@ -34,12 +34,19 @@ const CHUCKNORRIS_COMMAND = {
   type: 1,
 };
 
+const STARWARS_COMMAND = {
+  name: "starwars",
+  description: "Get star wars information",
+  type: 1,
+};
+
 const ALL_COMMANDS = [
   TEST_COMMAND,
   COMIC_COMMAND,
   POSTMESSAGE_COMMAND,
   SHOWMESSAGES_COMMAND,
   CHUCKNORRIS_COMMAND,
+  STARWARS_COMMAND,
 ];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);

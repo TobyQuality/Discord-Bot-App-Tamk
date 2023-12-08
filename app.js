@@ -5,6 +5,7 @@ import { VerifyDiscordRequest, getRandomEmoji, showMessages } from "./utils.js";
 import getComic from "./comic.js";
 import { EmbedBuilder } from "discord.js";
 import { getChuckNorrisJoke } from "./chucknorris.js";
+import { getStarWarsInfo } from "./starwars.js";
 
 // Create an express app
 const app = express();
@@ -119,6 +120,17 @@ app.post("/interactions", async function (req, res) {
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
           content: JSON.stringify(messages),
+        },
+      });
+    }
+
+    if (name === "starwars") {
+      const starWarsInfo = await getStarWarsInfo();
+      console.log(starWarsInfo);
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          content: JSON.stringify(starWarsInfo),
         },
       });
     }
