@@ -60,7 +60,11 @@ const CHALLENGE_COMMAND = {
   type: 1,
 };
 
-const CHUCKNORRIS_COMMAND = {};
+const CHUCKNORRIS_COMMAND = {
+  name: "chucknorris",
+  description: "Get a random Chuck Norris joke",
+  type: 1,
+};
 
 const ALL_COMMANDS = [
   TEST_COMMAND,
