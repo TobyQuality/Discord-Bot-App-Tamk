@@ -3,10 +3,6 @@ import fetch from "node-fetch";
 import { verifyKey } from "discord-interactions";
 import axios from "axios";
 
-function createId() {
-  return Math.random().toString(36).substr(2, 9);
-}
-
 export function VerifyDiscordRequest(clientKey) {
   return function (req, res, buf /*encoding*/) {
     const signature = req.get("X-Signature-Ed25519");
