@@ -2,8 +2,6 @@ import "dotenv/config";
 import fetch from "node-fetch";
 import { verifyKey } from "discord-interactions";
 import axios from "axios";
-// import { createMessage, getMessages } from "./dbjsoninteractions.js";
-import { Client } from "discord.js";
 
 function createId() {
   return Math.random().toString(36).substr(2, 9);
