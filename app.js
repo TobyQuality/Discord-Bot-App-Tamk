@@ -1,21 +1,10 @@
 import "dotenv/config";
 import express from "express";
-import {
-  InteractionType,
-  InteractionResponseType,
-  // InteractionResponseFlags,
-  // MessageComponentTypes,
-  // ButtonStyleTypes,
-} from "discord-interactions";
-import {
-  VerifyDiscordRequest,
-  getRandomEmoji,
-  DiscordRequest,
-  showMessages,
-} from "./utils.js";
-// import { getShuffledOptions, getResult } from "./game.js";
+import { InteractionType, InteractionResponseType } from "discord-interactions";
+import { VerifyDiscordRequest, getRandomEmoji, showMessages } from "./utils.js";
 import getComic from "./comic.js";
 import { EmbedBuilder } from "discord.js";
+import { getChuckNorrisJoke } from "./chucknorris.js";
 
 // Create an express app
 const app = express();
@@ -23,9 +12,6 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 // Parse request body and verifies incoming requests using discord-interactions package
 app.use(express.json({ verify: VerifyDiscordRequest(process.env.PUBLIC_KEY) }));
-
-// Store for in-progress games. In production, you'd want to use a DB
-// const activeGames = {};
 
 /**
  * Interactions endpoint URL where Discord will send HTTP requests
@@ -49,6 +35,7 @@ app.post("/interactions", async function (req, res) {
    */
   if (type === InteractionType.APPLICATION_COMMAND) {
     const { name, options } = data;
+    console.log(data);
     console.log("name: " + name);
     console.log("options: " + options);
 
@@ -90,10 +77,7 @@ app.post("/interactions", async function (req, res) {
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
-          embeds: [embed],
-
-          // Fetches a random chuck norris joke to send from a helper function
-          content: chuckNorrisJoke(),
+          content: getChuckNorrisJoke(),
         },
       });
     }

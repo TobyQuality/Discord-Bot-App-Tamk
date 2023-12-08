@@ -2,12 +2,6 @@ import "dotenv/config";
 import fetch from "node-fetch";
 import { verifyKey } from "discord-interactions";
 import axios from "axios";
-// import { createMessage, getMessages } from "./dbjsoninteractions.js";
-import { Client } from "discord.js";
-
-function createId() {
-  return Math.random().toString(36).substr(2, 9);
-}
 
 export function VerifyDiscordRequest(clientKey) {
   return function (req, res, buf /*encoding*/) {
@@ -33,7 +27,7 @@ export async function DiscordRequest(endpoint, options) {
       Authorization: `Bot ${process.env.DISCORD_TOKEN}`,
       "Content-Type": "application/json; charset=UTF-8",
       "User-Agent":
-        "DiscordBot https://00da-88-112-110-204.ngrok-free.app/interactions, 1.0.0)",
+        "DiscordBot https://8cc1-88-112-110-204.ngrok-free.app, 1.0.0)",
     },
     ...options,
   });
