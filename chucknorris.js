@@ -12,5 +12,4 @@ async function getChuckNorrisJoke() {
   return joke;
 }
 
-const joke = await getChuckNorrisJoke();
-console.log(joke);
+export { getChuckNorrisJoke };
