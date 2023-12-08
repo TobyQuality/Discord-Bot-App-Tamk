@@ -1,6 +1,5 @@
 import "dotenv/config";
-import { getRPSChoices } from "./game.js";
-import { capitalize, InstallGlobalCommands } from "./utils.js";
+import { InstallGlobalCommands } from "./utils.js";
 
 // Command for json db to fetch all messages
 const SHOWMESSAGES_COMMAND = {
