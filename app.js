@@ -125,6 +125,14 @@ app.post("/interactions", async function (req, res) {
     }
 
     if (name === "starwars") {
+      const starWarsInfo = await getStarWarsInfo();
+      console.log(starWarsInfo);
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          content: JSON.stringify(starWarsInfo),
+        },
+      });
     }
   }
 });
