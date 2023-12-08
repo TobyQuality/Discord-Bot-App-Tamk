@@ -1,19 +1,7 @@
 import "dotenv/config";
 import express from "express";
-import {
-  InteractionType,
-  InteractionResponseType,
-  // InteractionResponseFlags,
-  // MessageComponentTypes,
-  // ButtonStyleTypes,
-} from "discord-interactions";
-import {
-  VerifyDiscordRequest,
-  getRandomEmoji,
-  DiscordRequest,
-  showMessages,
-} from "./utils.js";
-// import { getShuffledOptions, getResult } from "./game.js";
+import { InteractionType, InteractionResponseType } from "discord-interactions";
+import { VerifyDiscordRequest, getRandomEmoji, showMessages } from "./utils.js";
 import getComic from "./comic.js";
 import { EmbedBuilder } from "discord.js";
 import { getChuckNorrisJoke } from "./chucknorris.js";
