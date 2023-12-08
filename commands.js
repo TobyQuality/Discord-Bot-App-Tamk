@@ -34,6 +34,8 @@ const CHUCKNORRIS_COMMAND = {
   type: 1,
 };
 
+const STARWARS_COMMAND = {};
+
 const ALL_COMMANDS = [
   TEST_COMMAND,
   COMIC_COMMAND,
