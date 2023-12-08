@@ -6,7 +6,9 @@ import { fetchUrl } from "./utils.js";
 
 async function getChuckNorrisJoke() {
   const response = await fetchUrl(url);
-  const joke = await response.json();
+  const json = await response.json();
+  const joke = json.value;
+
   return joke;
 }
 
