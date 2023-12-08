@@ -4,6 +4,14 @@ import { fetchUrl } from "./utils.js";
 
 const url = "https://swapi.dev/api/";
 
+/**
+ * Fetches star wars information from the API
+ * @param {string} url
+ * @returns {object} info
+ * @see https://swapi.dev/api/
+ *
+ */
+
 export async function getStarWarsInfo() {
   try {
     const response = await fetchUrl(url);
