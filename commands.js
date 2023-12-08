@@ -34,7 +34,11 @@ const CHUCKNORRIS_COMMAND = {
   type: 1,
 };
 
-const STARWARS_COMMAND = {};
+const STARWARS_COMMAND = {
+  name: "starwars",
+  description: "Get star wars information",
+  type: 1,
+};
 
 const ALL_COMMANDS = [
   TEST_COMMAND,
