@@ -123,6 +123,9 @@ app.post("/interactions", async function (req, res) {
         },
       });
     }
+
+    if (name === "starwars") {
+    }
   }
 });
 
