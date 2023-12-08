@@ -20,3 +20,8 @@ A message retriever
 
 Features:
 Random Chuck Norris joke fetcher
+
+## Main Release 4.0.0
+
+Features:
+Star Wars api information fetcher
