@@ -16,6 +16,7 @@ import {
 // import { getShuffledOptions, getResult } from "./game.js";
 import getComic from "./comic.js";
 import { EmbedBuilder } from "discord.js";
+import { chuckNorrisJoke } from "./chucknorris.js";
 
 // Create an express app
 const app = express();
