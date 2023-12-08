@@ -13,9 +13,6 @@ const PORT = process.env.PORT || 3001;
 // Parse request body and verifies incoming requests using discord-interactions package
 app.use(express.json({ verify: VerifyDiscordRequest(process.env.PUBLIC_KEY) }));
 
-// Store for in-progress games. In production, you'd want to use a DB
-// const activeGames = {};
-
 /**
  * Interactions endpoint URL where Discord will send HTTP requests
  */
@@ -38,6 +35,7 @@ app.post("/interactions", async function (req, res) {
    */
   if (type === InteractionType.APPLICATION_COMMAND) {
     const { name, options } = data;
+    console.log(data);
     console.log("name: " + name);
     console.log("options: " + options);
 
