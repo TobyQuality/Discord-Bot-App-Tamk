@@ -33,7 +33,7 @@ export async function DiscordRequest(endpoint, options) {
       Authorization: `Bot ${process.env.DISCORD_TOKEN}`,
       "Content-Type": "application/json; charset=UTF-8",
       "User-Agent":
-        "DiscordBot https://00da-88-112-110-204.ngrok-free.app/interactions, 1.0.0)",
+        "DiscordBot https://c78b-88-112-110-204.ngrok-free.app/interactions, 1.0.0)",
     },
     ...options,
   });
