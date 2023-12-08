@@ -3,3 +3,5 @@
 const url = "https://api.chucknorris.io/jokes/random";
 import { JSDOM } from "jsdom";
 import { fetchUrl } from "./utils.js";
+
+async function getChuckNorrisJoke() {}
